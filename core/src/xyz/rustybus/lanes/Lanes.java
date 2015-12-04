@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Lanes extends ApplicationAdapter {
+    public static final int VIEWPORT_WIDTH=480;
     OrthographicCamera camera;
 	SpriteBatch batch;
 	Car car;
@@ -15,10 +16,10 @@ public class Lanes extends ApplicationAdapter {
 	@Override
 	public void create () {
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 480, 480*Gdx.graphics.getHeight()/Gdx.graphics.getWidth());
+        camera.setToOrtho(false, VIEWPORT_WIDTH, VIEWPORT_WIDTH*Gdx.graphics.getHeight()/Gdx.graphics.getWidth());
 		batch = new SpriteBatch();
 
-		car=new Car(new Texture("blue_car.png"), 0, 0, 0);
+		car=new Car(new Texture("blue_car.png"));
         Gdx.input.setInputProcessor(new InputHandler(car));
 	}
 
@@ -31,6 +32,7 @@ public class Lanes extends ApplicationAdapter {
         camera.update();
         batch.setProjectionMatrix(camera.combined);
 
+        car.update();
 		car.render(batch);
 
 		batch.end();
