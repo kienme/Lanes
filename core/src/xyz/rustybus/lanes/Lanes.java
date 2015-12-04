@@ -19,7 +19,7 @@ public class Lanes extends ApplicationAdapter {
         camera.setToOrtho(false, VIEWPORT_WIDTH, VIEWPORT_WIDTH*Gdx.graphics.getHeight()/Gdx.graphics.getWidth());
 		batch = new SpriteBatch();
 
-		car=new Car(new Texture("blue_car.png"));
+		car=new Car(new Texture("blue_car_1.png"));
         Gdx.input.setInputProcessor(new InputHandler(car));
 	}
 
