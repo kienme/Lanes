@@ -14,9 +14,9 @@ enum State {
 }
 
 public class Car {
-    static final int SIDE_SPEED=15;
-    static final int ROTATION_SPEED=3;
-    static final int MAX_ROTATION=15;
+    static int SIDE_SPEED=15;
+    static int ROTATION_SPEED=3;
+    static int MAX_ROTATION=15;
     static int LEFT_POS, RIGHT_POS;
     Sprite car;
     float x, y, rotation;
