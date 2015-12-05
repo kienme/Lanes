@@ -19,7 +19,6 @@ public class Car {
     static final int MAX_ROTATION=15;
     static int LEFT_POS, RIGHT_POS;
     Sprite car;
-    //float scale;
     float x, y, rotation;
     State state;
 
@@ -34,13 +33,6 @@ public class Car {
         y=20;
         rotation=0;
         car.setOriginCenter();
-
-        //car.scale(scale);
-        //float w=car.getWidth();
-        //w=w+(w*scale);
-        //car.setRotation(40);
-        //car.setOriginCenter();
-        //car.rotate(-rotation);
     }
 
     public void update() {
@@ -102,15 +94,7 @@ public class Car {
         }
     }
 
-    public float getX() {
-        return x;
-    }
-
-    public float getY() {
-        return y;
-    }
-
-    public float getRotation() {
-        return rotation;
+    public void dispose() {
+        car.getTexture().dispose();
     }
 }

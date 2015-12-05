@@ -12,14 +12,15 @@ public class Lanes extends ApplicationAdapter {
     OrthographicCamera camera;
 	SpriteBatch batch;
 	Car car;
+    ScrollHandler scroller;
 	
 	@Override
 	public void create () {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, VIEWPORT_WIDTH, VIEWPORT_WIDTH*Gdx.graphics.getHeight()/Gdx.graphics.getWidth());
 		batch = new SpriteBatch();
-
-		car=new Car(new Texture("blue_car_1.png"));
+		car=new Car(new Texture("blue_car.png"));
+        scroller=new ScrollHandler();
         Gdx.input.setInputProcessor(new InputHandler(car));
 	}
 
@@ -32,9 +33,19 @@ public class Lanes extends ApplicationAdapter {
         camera.update();
         batch.setProjectionMatrix(camera.combined);
 
+        scroller.update();
         car.update();
+        scroller.render(batch);
 		car.render(batch);
 
 		batch.end();
 	}
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        batch.dispose();
+        car.dispose();
+        scroller.dispose();
+    }
 }
