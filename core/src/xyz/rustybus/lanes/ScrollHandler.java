@@ -4,21 +4,25 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-
 import java.util.Random;
 
 /**
  * Created by kienme on 5/12/15.
  *
+ * Change scroll_speed regularly
+ * Change vehicle_gap with scroll_speed
+ * Change side_speed with scroll_speed
  */
 
 public class ScrollHandler {
-    static int SCROLL_SPEED=-20;
+    static final int NO_OF_VEHICLES=4;
+    static int VEHICLE_GAP=800;
+    static int SCROLL_SPEED=-40;
     static float w, h;
 
     Vehicle vehicles[];
     Asphalt asphalt1, asphalt2, asphalt3;
-    Random random;
+    //Random random;
 
     ScrollHandler() {
         w=Lanes.VIEWPORT_WIDTH;
@@ -28,22 +32,25 @@ public class ScrollHandler {
         asphalt1=new Asphalt(0, 0, asphaltTexture);
         asphalt2=new Asphalt(0, asphalt1.getY()+h, asphaltTexture);
         asphalt3=new Asphalt(0, asphalt2.getY()+h, asphaltTexture);
-        random=new Random();
+        //random=new Random();
 
         Texture vehiclesTexture=new Texture("vehicles.png");
-        vehicles=new Vehicle[4];
+        vehicles=new Vehicle[NO_OF_VEHICLES];
         for(int i=0; i<vehicles.length; ++i) {
-            Side s=random.nextInt(2)==0?Side.LEFT:Side.RIGHT;
-            vehicles[i] = new Vehicle(s, new TextureRegion(vehiclesTexture, 100*i, 0, 100, 200));
+            //Side s=random.nextInt(2)==0?Side.LEFT:Side.RIGHT;
+            vehicles[i] = new Vehicle(i*VEHICLE_GAP+VEHICLE_GAP, new TextureRegion(vehiclesTexture, 100*i, 0, 100, 200));
         }
 
     }
 
     public void update() {
-        //Handle positions of vehicles
         asphalt1.moveY(SCROLL_SPEED);
         asphalt2.moveY(SCROLL_SPEED);
         asphalt3.moveY(SCROLL_SPEED);
+
+        for(int i=0; i<vehicles.length; ++i) {
+            vehicles[i].moveY(SCROLL_SPEED/2);
+        }
     }
 
     public void render(SpriteBatch batch) {
@@ -52,7 +59,7 @@ public class ScrollHandler {
         batch.draw(asphalt3.getImage(), asphalt3.getX(), asphalt3.getY(), w, h);
 
         for(int i=0; i<vehicles.length; ++i)
-            batch.draw(vehicles[i].getVehicle(), vehicles[i].getX(), vehicles[i].getY());
+            batch.draw(vehicles[i].getVehicle(), vehicles[i].getX()-50, vehicles[i].getY());
     }
 
     public void dispose() {
