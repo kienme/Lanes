@@ -7,6 +7,8 @@ import com.badlogic.gdx.InputAdapter;
 /**
  * Created by kienme on 4/12/15.
  *
+ * InputHandler. It is.
+ *
  */
 
 public class InputHandler extends InputAdapter {

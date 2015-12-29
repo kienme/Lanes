@@ -7,6 +7,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 /**
  * Created by kienme on 4/12/15.
  *
+ * State is used to keep track of user's current state
+ * Car is the user
+ *
  */
 
 enum State {

@@ -9,6 +9,9 @@ import java.util.Random;
 /**
  * Created by kienme on 5/12/15.
  *
+ * Handles the scrolling, the road and incoming vehicles
+ *
+ * TO DO
  * Change scroll_speed regularly
  * Change vehicle_gap with scroll_speed
  * Change side_speed with scroll_speed

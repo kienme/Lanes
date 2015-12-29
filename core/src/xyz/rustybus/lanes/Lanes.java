@@ -7,6 +7,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+/*
+ *It all starts here
+ */
+
 public class Lanes extends ApplicationAdapter {
     public static final int VIEWPORT_WIDTH=480;
     OrthographicCamera camera;

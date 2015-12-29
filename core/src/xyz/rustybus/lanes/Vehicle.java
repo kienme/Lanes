@@ -7,6 +7,9 @@ import java.util.Random;
 /**
  * Created by kienme on 5/12/15.
  *
+ * Side represents the side where the incoming vehicle is.
+ * Vehicle is the incoming vehicle
+ *
  */
 
 enum Side {
